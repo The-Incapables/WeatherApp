@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Weather_App.UI
+namespace WeatherApp.UI
 {
     internal class Menu
     {

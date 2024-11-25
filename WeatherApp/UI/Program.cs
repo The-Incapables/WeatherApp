@@ -1,4 +1,4 @@
-﻿namespace Weather_App.UI
+﻿namespace WeatherApp.UI
 {
     internal class Program
     {
