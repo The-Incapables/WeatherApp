@@ -7,7 +7,7 @@ namespace WeatherApp.DataAccess
 {
     public static class DataLoader
     {
-        public static void LoadData(string filepath)
+        public static void LoadData(string csvFilePath)
         {
             using (var context = new WeatherContext())
             {
@@ -16,7 +16,7 @@ namespace WeatherApp.DataAccess
                     return; // Avsluta om det redan finns data
                 }
 
-                var lines = File.ReadAllLines(filepath);
+                var lines = File.ReadAllLines(csvFilePath);
                 int invalidRowCount = 0; // Räknare för ogiltiga rader
 
                 foreach (var line in lines.Skip(1))
