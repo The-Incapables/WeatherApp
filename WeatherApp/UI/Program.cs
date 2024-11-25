@@ -24,9 +24,19 @@ namespace WeatherApp.UI
                     context.Database.EnsureCreated(); // Skapa databasen om den inte finns
                     Console.WriteLine("The Database is created!");
                 }
+                if (File.Exists(csvFilePath))
+                {
+                    DataLoader.LoadData(csvFilePath); // Ladda data från CSV till databasen
+                    Console.WriteLine("CSV file loaded into database.");
+                }
+                else
+                {
+                    Console.WriteLine("CSV file not found. No data to load.");
+                }
             }
 
-
+            //Kontrollera och ladda CSV-filen om den finns
+           
 
             Console.WriteLine("Program finished successfully.");
 
