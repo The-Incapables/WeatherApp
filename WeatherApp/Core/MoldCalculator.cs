@@ -8,7 +8,12 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Core
 {
-    public class MoldCalculator
+    public static class MoldCalculator
     {
+
+        public static double CalcullateMoldRisk(double Temp, double Luftfuktighet)
+        {
+            return (Temp + Luftfuktighet) / 2; 
+        }
     }
 }
