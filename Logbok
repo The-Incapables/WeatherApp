@@ -1,0 +1,7 @@
+Basel & Olli
+- 2024-11-25
+- Idag har vi gjort en hel del, vi har börjat med att skapa classerna struktuern som vi behöver, 
+- Vi har även gjort så att Den kan läsa in CSV filen och skapa en DB. Ifall DB inte finns så skapar den en ny annars så öppnar den det ifrån debugger-net09.... där den ligger
+- Vi har även gjort en avarge temperatur berälnare för dagen som man vill nå åt.
+- vi har påbörjat datahanteringen.
+- vi har skapat Get och Set för modellen.
