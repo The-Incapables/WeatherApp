@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// db translation
 namespace WeatherApp.DataAccess
 {
     public class WeatherContext : DbContext

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// db info typing 
+
 namespace WeatherApp.DataAccess
 {
     public class WeatherDataModel
