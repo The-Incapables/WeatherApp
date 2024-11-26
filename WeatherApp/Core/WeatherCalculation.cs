@@ -15,12 +15,13 @@ namespace WeatherApp.Core
     public class WeatherCalculation
     {
         private readonly WeatherContext _context;
+
         public WeatherCalculation(WeatherContext context)
         {
             _context = context;
         }
 
-        #region DataManagement
+        #region DataMangement
         public void AddWeatherData(DateTime Datum, string Plats, double Temp, double LuftFuktighet)
         {
             var newWeatherData = new WeatherDataModel
@@ -39,10 +40,12 @@ namespace WeatherApp.Core
         {
             return _context.WeatherData.Where(data => data.Datum == Datum).ToList();
         }
+        #endregion
 
-
-        public (double inDoorAverage, double outDoorAverage) AverageTemp(DateTime Datum)
+        #region TempData
+        public double AverageTemp(DateTime Datum, string choice)
         {
+
             var weatherDataForDate = GetWeatherDataByDate(Datum);
             var indoorData = weatherDataForDate.Where(data => data.Plats == "Inne").ToList();
             var outdoorData = weatherDataForDate.Where(data => data.Plats == "Ute").ToList();
@@ -50,16 +53,109 @@ namespace WeatherApp.Core
             var averageIndoorTemp = indoorData.Any() ? indoorData.Average(data => data.Temp) : 0;
             var averageOutdoorTemp = indoorData.Any() ? outdoorData.Average(data => data.Temp) : 0;
 
-
-            return (averageIndoorTemp, averageOutdoorTemp);
+            if (choice == "Inne")
+            {
+                return (averageIndoorTemp);
+            }
+            else
+            { 
+                return (averageOutdoorTemp);
+            }
+            
         }
-
-        public void averageDayTempSortingAlgorithm()
-        {
-
-        }
-
-
         #endregion
+
+        #region SortingData
+        public void AverageDayTempSorting()            // Soreterar avg temp för hela CSV
+        {
+            
+            var allDates = _context.WeatherData.Select(data => data.Datum.Date).Distinct().ToList();        // Hämtar alla datum
+
+            
+            var dailyAverageTemps = new List<(DateTime Date, double IndoorAvg, double OutdoorAvg)>();       // Räknar ut avg temp/dag
+
+            foreach (var date in allDates)
+            {
+                var weatherDataForDate = GetWeatherDataByDate(date);
+
+                
+                var indoorData = weatherDataForDate.Where(data => data.Plats == "Inne").ToList();       // Separerar inne & ute
+                var outdoorData = weatherDataForDate.Where(data => data.Plats == "Ute").ToList();
+
+                
+                var indoorAvg = indoorData.Any() ? indoorData.Average(data => data.Temp) : 0;
+                var outdoorAvg = outdoorData.Any() ? outdoorData.Average(data => data.Temp) : 0;        // räknar ut avg temp 
+
+                dailyAverageTemps.Add((date, indoorAvg, outdoorAvg));
+            }
+
+            
+            var sortedIndoorTemps = dailyAverageTemps
+                .OrderByDescending(day => day.IndoorAvg)
+                .ToList();
+                                                                    // Sorterar för inne och ute
+            var sortedOutdoorTemps = dailyAverageTemps
+                .OrderByDescending(day => day.OutdoorAvg)
+                .ToList();
+
+            
+            //Console.WriteLine("Indoor Temperatures (Warmest to Coldest):");       //!Tester!
+            //foreach (var record in sortedIndoorTemps)
+            //{
+            //    Console.WriteLine($"{record.Date.ToShortDateString()} - {record.IndoorAvg:F2}°C");
+            //}
+
+            //Console.WriteLine("\nOutdoor Temperatures (Warmest to Coldest):");
+            //foreach (var record in sortedOutdoorTemps)
+            //{
+            //    Console.WriteLine($"{record.Date.ToShortDateString()} - {record.OutdoorAvg:F2}°C");
+            //}
+        }
+        
+        public void AverageFuktSorting()
+        {
+            var allDates = _context.WeatherData.Select(data => data.Datum.Date).Distinct().ToList();
+
+            var dailyAverageFukt = new List<(DateTime Date, double IndoorAvg, double OutdoorAvg)>();
+
+            foreach (var date in allDates)
+            {
+                var weatherDataForDate = GetWeatherDataByDate(date);
+
+
+                var indoorData = weatherDataForDate.Where(data => data.Plats == "Inne").ToList();       // Separerar inne & ute
+                var outdoorData = weatherDataForDate.Where(data => data.Plats == "Ute").ToList();
+
+
+                var indoorAvg = indoorData.Any() ? indoorData.Average(data => data.Luftfuktighet) : 0;
+                var outdoorAvg = outdoorData.Any() ? outdoorData.Average(data => data.Luftfuktighet) : 0;        // räknar ut avg temp 
+
+                dailyAverageFukt.Add((date, indoorAvg, outdoorAvg));
+            }
+            var sortedIndoorFukt = dailyAverageFukt
+                .OrderBy(day => day.IndoorAvg) 
+                .ToList();
+            // Sorterar för inne och ute
+            var sortedOutdoorFukt = dailyAverageFukt
+                .OrderBy(day => day.OutdoorAvg)
+                .ToList();
+
+
+            //Console.WriteLine("Indoor fukt (Torraste till fuktigaste day):-)");       //!Tester!  8=====D ~~ (  .  Y  .  )
+            //foreach (var record in sortedIndoorFukt)
+            //{
+            //    Console.WriteLine($"{record.Date.ToShortDateString()} - {record.IndoorAvg} fuktighet");
+            //}
+
+            //Console.WriteLine("\nOutdoor fukt (Torraste till fuktigaste day):-)");
+            //foreach (var record in sortedOutdoorFukt)
+            //{
+            //    Console.WriteLine($"{record.Date.ToShortDateString()} - {record.OutdoorAvg} fuktighet");
+            //}
+        }
+        #endregion
+
+
+
     }
 }
