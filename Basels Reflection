@@ -1,1 +1,9 @@
 - Basels Reflection
+Den här uppgiften har varit utmanande men också lärorik. Vi började med att skapa grunden med klasser och strukturer, vilket gick smidigt och gav en bra start. Att få CSV-filen att fungera med databasen och se 
+till att databasen skapas eller öppnas automatiskt kändes som en viktig del. Jag blev också nöjd med genomsnittstemperaturberäknaren, som var enkel men krävde att vi tänkte igenom logiken ordentligt.
+
+Vi fick klart alla metoder, vilket var en stor lättnad, även om vi körde fast när vi testade Blazor. Det var frustrerande att behöva backa, men det blev rätt beslut i längden. Att avsluta allt och få helheten att 
+fungera kändes riktigt bra.
+
+Sammanfattningsvis har jag lärt mig mycket om databashantering, att strukturera kod och vikten av att justera planen när något inte fungerar. Det blev inte perfekt, men jag är nöjd med resultatet och känner att jag 
+utvecklats.
