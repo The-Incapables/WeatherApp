@@ -11,7 +11,7 @@ namespace WeatherApp.UI
     {
         static void Main(string[] args)
         {
-            string dbFilePath = Path.Combine(Directory.GetCurrentDirectory(), "WeatherData.db");
+            string dbFilePath = Path.Combine(Directory.GetCurrentDirectory(), "WeatherDataTheIncapables.db");
             string csvFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "TempFuktData.csv");
 
             // Kontrollera och skapa databasen om den saknas

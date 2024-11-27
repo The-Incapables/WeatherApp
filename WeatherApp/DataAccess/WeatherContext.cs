@@ -14,7 +14,7 @@ namespace WeatherApp.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=WeatherData.db");
+            optionsBuilder.UseSqlite("Data Source=WeatherDataTheIncapables.db");
             //Db Filen finns "C:\Users\.....\source\repos\SQL Databas Hantering\WeatherApp\WeatherApp\bin\Debug\net9.0"
         }
 

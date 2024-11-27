@@ -50,7 +50,7 @@ namespace WeatherApp.DataAccess
                 context.SaveChanges();
 
                 // Skriv ut antalet ogiltiga rader
-                Console.WriteLine($"Number of invalid rows skipped: {invalidRowCount}");
+                Console.WriteLine($"\nNumber of invalid rows skipped: {invalidRowCount}");
             }
         }
     }
