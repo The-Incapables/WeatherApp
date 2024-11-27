@@ -1,1 +1,10 @@
 - Olivers reflection
+Det här projektet har varit både kul och utmanande. Vi började med att sätta upp klasser och strukturer för att få en tydlig grund att stå på, och det gick rätt bra. Att koppla CSV-filen till databasen var lite knepigt, 
+men när vi fick till att databasen kunde skapas eller öppnas automatiskt kändes det som ett bra steg framåt. En annan grej som fungerade smidigt var genomsnittsberäknaren, även om den krävde att vi tänkte till för att undvika 
+småfel.
+
+När vi jobbade på metoderna märkte jag att arbetet flöt bättre än jag trodde. Att få klart grunderna var skönt, men vi testade Blazor och det blev en liten omväg. Vi bestämde oss snabbt för att skrota det, vilket var rätt beslut.
+Det var ändå en bra erfarenhet att prova och inse vad som inte passade för just det här projektet.
+
+Att få klart allt i slutet och se hur bitarna föll på plats var tillfredsställande. Det känns som vi fått bra koll på hur allt hänger ihop, och jag har lärt mig mycket om databaser, hur man bygger strukturerad kod och löser problem 
+längs vägen. Det är klart att allt inte gick perfekt, men resultatet är ändå något jag är nöjd med.
