@@ -53,7 +53,7 @@ namespace WeatherApp.Core
             var averageIndoorTemp = indoorData.Any() ? indoorData.Average(data => data.Temp) : 0;
             var averageOutdoorTemp = indoorData.Any() ? outdoorData.Average(data => data.Temp) : 0;
 
-            if (choice == "Inne")
+            if (choice == "1")
             {
                 return (averageIndoorTemp);
             }
@@ -98,18 +98,24 @@ namespace WeatherApp.Core
                 .OrderByDescending(day => day.OutdoorAvg)
                 .ToList();
 
-            
-            //Console.WriteLine("Indoor Temperatures (Warmest to Coldest):");       //!Tester!
-            //foreach (var record in sortedIndoorTemps)
-            //{
-            //    Console.WriteLine($"{record.Date.ToShortDateString()} - {record.IndoorAvg:F2}°C");
-            //}
 
-            //Console.WriteLine("\nOutdoor Temperatures (Warmest to Coldest):");
-            //foreach (var record in sortedOutdoorTemps)
-            //{
-            //    Console.WriteLine($"{record.Date.ToShortDateString()} - {record.OutdoorAvg:F2}°C");
-            //}
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\nIndoor Temperatures (Warmest to Coldest): Date, Indoor Temp, OutDoor Temp");       
+            Console.ResetColor();
+            for (int i = 0;  i < 50; i++)
+            {
+                Console.WriteLine(sortedIndoorTemps[i]);
+            }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\nOutdoor Temperatures (Warmest to Coldest):Date, Indoor Temp, OutDoor Temp");       
+            Console.ResetColor();
+            for (int i = 0;  i < 50; i++)
+            {
+                Console.WriteLine(sortedOutdoorTemps[i]);
+            }
+
+            
         }
         
         public void AverageFuktSorting()
@@ -140,22 +146,22 @@ namespace WeatherApp.Core
                 .OrderBy(day => day.OutdoorAvg)
                 .ToList();
 
-
-            //Console.WriteLine("Indoor fukt (Torraste till fuktigaste day):-)");       //!Tester!  8=====D ~~ (  .  Y  .  )
-            //foreach (var record in sortedIndoorFukt)
-            //{
-            //    Console.WriteLine($"{record.Date.ToShortDateString()} - {record.IndoorAvg} fuktighet");
-            //}
-
-            //Console.WriteLine("\nOutdoor fukt (Torraste till fuktigaste day):-)");
-            //foreach (var record in sortedOutdoorFukt)
-            //{
-            //    Console.WriteLine($"{record.Date.ToShortDateString()} - {record.OutdoorAvg} fuktighet");
-            //}
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\nIndoor Humidity (Driest to most Humid): Date, Indoor Humidity, OutDoor Humidity");
+            Console.ResetColor();
+            for (int i = 0; i < 50; i++)
+            {
+                Console.WriteLine(sortedIndoorFukt[i]);
+            }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\nOutdoor Humidity (Driest to most Humid): Date, Indoor Humidity, OutDoor Humidity");
+            Console.ResetColor();
+            for (int i = 0; i < 50; i++)
+            {
+                Console.WriteLine(sortedOutdoorFukt[i]);
+            }
+            
         }
         #endregion
-
-
-
     }
 }
